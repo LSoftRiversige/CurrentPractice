@@ -11,15 +11,18 @@ namespace ConsoleApp5
 
     class Program
     {
+
         static void Main(string[] args)
         {
-            MyLinkedList<string>.SelfTest();
+            MyQueue<decimal>.SelfTest();
 
-            MyList<int>.SelfTest();
+            //MyLinkedList<string>.SelfTest();
 
-            Brackets.SelfTest();
+            //MyList<int>.SelfTest();
 
-            FindExamples.SelfTest();
+            //Brackets.SelfTest();
+
+            //FindExamples.SelfTest();
         }
     }
 }

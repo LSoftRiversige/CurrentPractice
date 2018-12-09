@@ -71,8 +71,8 @@ namespace ConsoleApp5
 
         public class MyLinkedListNode
         {
-            public MyLinkedListNode prev;
-            public MyLinkedListNode next;
+            private MyLinkedListNode prev;
+            private MyLinkedListNode next;
             private readonly T value;
 
             public MyLinkedListNode(MyLinkedListNode prev, MyLinkedListNode next, T value)
@@ -145,6 +145,11 @@ namespace ConsoleApp5
             {
                 return Value.ToString();
             }
+
+            internal void SetPrev(MyLinkedListNode node)
+            {
+                prev = node;
+            }
         }
 
         public MyLinkedListNode Last => last;
@@ -204,11 +209,8 @@ namespace ConsoleApp5
             }
             else
             {
-                MyLinkedListNode newNode = new MyLinkedListNode(null, first, value)
-                {
-                    next = first
-                };
-                first.prev = newNode;
+                MyLinkedListNode newNode = new MyLinkedListNode(null, first, value);
+                first.SetPrev(newNode);
                 first = newNode;
                 return newNode;
             }
