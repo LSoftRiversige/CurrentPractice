@@ -65,11 +65,13 @@ namespace ConsoleApp5
 
         public bool Contains(T item)
         {
-            void Check(T val, out bool end)
-            {
-                end = item.Equals(val);
-            };
-            return ApplyAll(Check);
+            //void Check(T val, out bool end)
+            //{
+            //    end = item.Equals(val);
+            //};
+            //return ApplyAll(Check);
+            
+            return ApplyAll((T val, out bool end) => { end = item.Equals(val); });
         }
 
         public void CopyTo(Array array, int arrayIndex)
@@ -93,15 +95,9 @@ namespace ConsoleApp5
             }
 
             int counter = 0;
-            void DoCopy(T val, out bool e)
-            {
-                e = false;
-                array.SetValue(val, arrayIndex+counter++);
-            };
-            ApplyAll(DoCopy);
-        }
 
-        //public Enumerator GetEnumerator();
+            ApplyAll((T val, out bool end)=> { end = false; array.SetValue(val, arrayIndex + counter++); });
+        }
 
         public T Peek()
         {
@@ -133,12 +129,15 @@ namespace ConsoleApp5
             if (result.Length > 0)
             {
                 int index = 0;
-                void DoCopy(T val, out bool stop)
-                {
-                    result[index++] = val;
-                    stop = false;
-                };
-                ApplyAll(DoCopy);
+                
+                //void DoCopy(T val, out bool stop)
+                //{
+                //    result[index++] = val;
+                //    stop = false;
+                //};
+                //ApplyAll(DoCopy);
+
+                ApplyAll((T val, out bool end) => { result[index++] = val; end = false; });
             }
             return result;
         }
@@ -266,11 +265,11 @@ namespace ConsoleApp5
             //    Console.WriteLine(s);
             //}
 
-            //Console.WriteLine("Contains()");
-            //if (stack.Contains("Item2"))
-            //{
-            //    Console.WriteLine("Yes");
-            //}
+            Console.WriteLine("Contains()");
+            if (stack.Contains("Item2"))
+            {
+                Console.WriteLine("Yes");
+            }
 
             //Console.WriteLine("TryPeek()");
             //Console.WriteLine(stack.TryPeek(out string res));
@@ -288,21 +287,21 @@ namespace ConsoleApp5
             //Console.WriteLine(stack.TryPeek(out res));
             //Console.WriteLine(res);
 
-            Console.WriteLine("TryPop()");
-            Console.WriteLine(stack.TryPop(out string res));
-            Console.WriteLine(res);     
-            Console.WriteLine(stack.TryPop(out res));
-            Console.WriteLine(res);     
-            Console.WriteLine(stack.TryPop(out res));
-            Console.WriteLine(res);     
-            Console.WriteLine(stack.TryPop(out res));
-            Console.WriteLine(res);     
-            Console.WriteLine(stack.TryPop(out res));
-            Console.WriteLine(res);     
-            Console.WriteLine(stack.TryPop(out res));
-            Console.WriteLine(res);     
-            Console.WriteLine(stack.TryPop(out res));
-            Console.WriteLine(res);
+            //Console.WriteLine("TryPop()");
+            //Console.WriteLine(stack.TryPop(out string res));
+            //Console.WriteLine(res);     
+            //Console.WriteLine(stack.TryPop(out res));
+            //Console.WriteLine(res);     
+            //Console.WriteLine(stack.TryPop(out res));
+            //Console.WriteLine(res);     
+            //Console.WriteLine(stack.TryPop(out res));
+            //Console.WriteLine(res);     
+            //Console.WriteLine(stack.TryPop(out res));
+            //Console.WriteLine(res);     
+            //Console.WriteLine(stack.TryPop(out res));
+            //Console.WriteLine(res);     
+            //Console.WriteLine(stack.TryPop(out res));
+            //Console.WriteLine(res);
 
             Console.WriteLine("Press any key...");
             Console.ReadKey();
