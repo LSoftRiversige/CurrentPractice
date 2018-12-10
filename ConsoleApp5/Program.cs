@@ -5,16 +5,14 @@ using System.Collections;
 
 namespace ConsoleApp5
 {
-
-    //стек и очередь
-
-
     class Program
     {
 
         static void Main(string[] args)
         {
-            MyQueue<decimal>.SelfTest();
+            MyStack<string>.SelfTest();
+            
+            //MyQueue<decimal>.SelfTest();
 
             //MyLinkedList<string>.SelfTest();
 

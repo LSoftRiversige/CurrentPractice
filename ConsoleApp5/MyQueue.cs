@@ -103,17 +103,16 @@ namespace ConsoleApp5
         public virtual T[] ToArray()
         {
             T[] arr = new T[Count()];
-
-            int counter = 0;
-
-            void SaveToArray(T v, out bool e)
+            if (arr.Length > 0)
             {
-                arr[counter++] = v;
-                e = false;
+                int counter = 0;
+                void SaveToArray(T v, out bool e)
+                {
+                    arr[counter++] = v;
+                    e = false;
+                }
+                Iterator(SaveToArray);
             }
-
-            Iterator(SaveToArray);
-
             return arr;
         }
 
